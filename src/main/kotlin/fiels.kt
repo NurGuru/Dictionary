@@ -3,9 +3,9 @@ import java.io.File
 fun main() {
     val wordsFile = File("words.txt")
 
-    wordsFile.readLines()
+    val lines = wordsFile.readLines()
 
-    for (i in wordsFile.readLines()) {
+    for (i in lines) {
         println(i)
     }
 }
