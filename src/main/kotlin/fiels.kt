@@ -7,8 +7,7 @@ fun main() {
 
     for (line in lines) {
         val line = line.split("|")
-        line[2] ?: "0"
-        val word = Word(line[0], line[1], line[2].toInt(),)
+        val word = Word(line[0], line[1], line[2].toIntOrNull()?:0,)
         dictionary.add(word)
     }
     println(dictionary)
