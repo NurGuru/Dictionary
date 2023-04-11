@@ -15,7 +15,22 @@ fun main() {
     while (true) {
         println("Меню: 1 – Учить слова, 2 – Статистика, 0 – Выход")
         when (readln().toInt()) {
-            1 -> println("Вы выбрали учить слова")
+            1 -> do {
+                val unlearnedWordsList = dictionary.filter { it.correctAnswersCount < 3 }
+                val randomUnlearnedWords = unlearnedWordsList.shuffled().take(4)
+                if (unlearnedWordsList.isEmpty()) {
+                    println("Вы Выучили все слова")
+                    break
+                } else {
+                    println(
+                        "Какой верный вариант перевода слова: ${randomUnlearnedWords.random().original}:\n" +
+                                "${randomUnlearnedWords.map { it.translate }}"
+                    )
+                    val answer = readln()
+                }
+
+            } while (unlearnedWordsList.isNotEmpty())
+
             2 -> println(
                 "Всего слов в словаре ${dictionary.size}\n" +
                         "Выучено $learnedWords слов из ${dictionary.size}| " +
