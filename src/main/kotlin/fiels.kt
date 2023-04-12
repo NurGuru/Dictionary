@@ -3,15 +3,18 @@ import kotlin.math.roundToInt
 
 fun main() {
     val wordsFile = File("words.txt")
-    val lines: List<String> = wordsFile.readLines()
+    val linesOfWordsList: List<String> = wordsFile.readLines()
     val dictionary: MutableList<Word> = mutableListOf()
 
-    fun saveDictionary(){
+    fun saveDictionary() {
+        for (word in dictionary) {
+            wordsFile.appendText(("${word.original}|${word.translate}|${word.correctAnswersCount}\n"))
+        }
 //        wordsFile.writeText()  что-то не соображу как правильно эту функцию оформить
 
     }
 
-    for (line in lines) {
+    for (line in linesOfWordsList) {
         val line = line.split("|")
         val word = Word(line[0], line[1], line[2].toIntOrNull() ?: 0)
         dictionary.add(word)
@@ -35,12 +38,11 @@ fun main() {
                         .mapIndexed { index, word -> "${index + 1} - ${word.translate}" }
                         .joinToString(", ", postfix = ", 0 - Меню"))
                     val answer = readln().toInt()
-                    if (answer != 0 && randomUnlearnedWords[answer].translate == randomWordToCHeck.translate) {
+                    if (answer != 0 && randomUnlearnedWords[answer - 1].translate == randomWordToCHeck.translate) {
                         randomWordToCHeck.correctAnswersCount++
                         saveDictionary()
                     } else if (answer == 0) break
                 }
-
 
             } while (unlearnedWordsList.isNotEmpty())
 
