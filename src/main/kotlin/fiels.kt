@@ -10,7 +10,6 @@ fun main() {
         for (word in dictionary) {
             wordsFile.appendText(("${word.original}|${word.translate}|${word.correctAnswersCount}\n"))
         }
-//        wordsFile.writeText()  что-то не соображу как правильно эту функцию оформить
 
     }
 
