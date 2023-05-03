@@ -1,5 +1,5 @@
-hello|привет|2
+hello|привет|3
 dog|собака|3
-cat|кошка|2
+cat|кошка|3
 mother|мама|3
-father|папа|2
+father|папа|3
